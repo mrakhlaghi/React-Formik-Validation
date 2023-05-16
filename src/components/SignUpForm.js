@@ -15,7 +15,7 @@ const initialValues = {
 };
 // 2.
 const onSubmit = (values) => {
-  console.log(values);
+  // console.log(values);
 };
 // 3.
 // const validate = (values) => {
@@ -38,14 +38,14 @@ const onSubmit = (values) => {
 const validationSchema = Yup.object({
   name: Yup.string()
     .required(" name is required")
-    .min(8, "name length is require"),
+    .min(8, "name length is require at least 8 character "),
   email: Yup.string()
     .email("invalid email format")
     .required(" email is required"),
   password: Yup.string()
     .required(" password is required")
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#%&])(?=.{8,})/,
       "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
     ),
   confirmPassword: Yup.string()
@@ -73,11 +73,15 @@ const SignUpForm = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/users/1")
-      .then((res) => setFormValues(res.data)).catch(err => console.log(err))
+      .get("/users")
+      .then((res) => {
+        let user = res.data;
+        setFormValues(user);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
-  console.log(formik.errors);
+  // console.log(formik.errors);
 
   return (
     <div>
@@ -98,11 +102,11 @@ const SignUpForm = () => {
             <div className="error">{formik.errors.name}</div>
           )}
         </div> */}
-        <Input formik={formik} name="name" label="Name"/>
-        <Input formik={formik} name="email" label="Email"/>
-        <Input formik={formik} name="password" label="Password"/>
-        <Input formik={formik} name="confirmPassword" label="ConfirmPassword"/>
-        <Input formik={formik} name="phoneNumber" label="PhoneNumber"/>
+        <Input formik={formik} name="name" label="Name" />
+        <Input formik={formik} name="email" label="Email" />
+        <Input formik={formik} name="password" label="Password" />
+        <Input formik={formik} name="confirmPassword" label="ConfirmPassword" />
+        <Input formik={formik} name="phoneNumber" label="PhoneNumber" />
         {/* <div className="formControl">
           <label htmlFor="email"> Email</label>
           <input
