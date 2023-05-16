@@ -1,7 +1,18 @@
-const Input = ({name, label ,formik , type="text"}) => {
+import { useEffect } from "react";
+import { createRef } from "react";
+
+const Input = ({name, label ,formik , type="text" }) => {
+  let inputRef =createRef()
+  
+  useEffect(()=>{
+    inputRef.current.focus()
+  },[])
+    
+    
     return (<div className="formControl">
     <label htmlFor={name}> {label}</label>
     <input
+       ref={inputRef}
       type={type}
       name={name}
       id={name}

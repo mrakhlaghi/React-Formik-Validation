@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import * as Yup from "yup";
 import Input from "./commen/input";
 
@@ -60,7 +60,7 @@ const validationSchema = Yup.object({
 
 const SignUpForm = () => {
   const [formValues, setFormValues] = useState(null);
-
+  
   const formik = useFormik({
     initialValues: formValues || initialValues,
     enableReinitialize: true,
@@ -79,6 +79,8 @@ const SignUpForm = () => {
         setFormValues(user);
       })
       .catch((err) => console.log(err));
+      
+
   }, []);
 
   // console.log(formik.errors);
@@ -102,7 +104,7 @@ const SignUpForm = () => {
             <div className="error">{formik.errors.name}</div>
           )}
         </div> */}
-        <Input formik={formik} name="name" label="Name" />
+        <Input formik={formik} name="name" label="Name"  />
         <Input formik={formik} name="email" label="Email" />
         <Input formik={formik} name="password" label="Password" />
         <Input formik={formik} name="confirmPassword" label="ConfirmPassword" />
