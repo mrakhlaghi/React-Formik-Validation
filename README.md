@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-# Live and Deployed version [here](https://6463fc38beb364222425074f--sprightly-quokka-06a0fa.netlify.app/)
+# Live and Deployed version [here](https://mr-akhlaghi-react-formik-validation.netlify.app/)
 
 ![Formik preview](https://github.com/mrakhlaghi/React-Formik-Validation/assets/103969331/1fb174c6-0c7d-47ff-b760-231b84e35450)
 
